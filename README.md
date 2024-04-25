@@ -1,7 +1,30 @@
-# wp-rocket-diagnoser
+# WP Rocket - Support Diagnoser
+
 Repository of the WP Rocket Diagnoser plugin used by the Support team
 
 ## Contributions
+
+### Plugin's version
+
+Whenever you make changes to the plugin and before pushing the final code of the new contribution to the repository, make sure to update the version in the `wpr-diagnoser.php` file.
+
+Update the `* Version: x.x.x` in the comment at the beginning of the file
+
+And Update the constant `WPR_DIAGNOSER_VERSION` => `define('WPR_DIAGNOSER_VERSION', 'x.x.x');`
+
+Make sure both are synchronized.
+
+We use the SEMVER v2.0.0 specification here, please check [https://semver.org/](https://semver.org/)
+
+In summary given a version number MAJOR.MINOR.PATCH, increment the:
+
+- **MAJOR** version when you make incompatible API changes
+- **MINOR** version when you add functionality in a backward compatible manner
+- **PATCH** version when you make backward compatible bug fixes
+
+This helps the UIs that reads the information collected by this plugin to know which version is installed on the site, so, the UIs can know how to read the information (In case something changes from version to version, something that we should avoid whenever possible).
+
+This will be used by the UIs as the "[API version](https://www.postman.com/api-platform/api-versioning/)".
 
 ### Avoid making changes to WordPress and plugins if they are not needed
 
@@ -38,8 +61,8 @@ In which the key `minifyimg` is the name that will be used to construct the Quer
 
 `minifyimg` will be automatically prefixed with `wpr-no-` for the new option deactivation and `wpr-activate-` for the new option activation, so, by only adding that to the array, two new QueryStrings will be created for you:
 
-* wpr-no-minifyimg
-* wpr-activate-minifyimg
+- wpr-no-minifyimg
+- wpr-activate-minifyimg
 
 And these will be added automatically to the cached QueryStrings list in WP Rocket.
 
