@@ -42,6 +42,12 @@ class WPRDiagnoser
   ];
   /**
    * Some WP Rocket filters
+   * 
+   * Provide the name of the filter as the key and the defaul value as the value in the array:
+   * 
+   * `
+   * 'name_of_the_filter' => DEFAULT_VALUE
+   * `
    */
   private $no_rocket_filters = [
     'do_rocket_generate_caching_files' => true,
