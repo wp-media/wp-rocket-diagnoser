@@ -4,7 +4,7 @@
  * Plugin Name: WP Rocket - Support Diagnoser
  * Plugin URI:  https://wp-media.me/
  * Description: Helps WP Rocket's support team to diagnose issues
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author:      WP Rocket Support Team
  * Author URI:  https://wp-rocket.me/
  * License:     GNU General Public License v2 or later
@@ -18,7 +18,7 @@ use \WPR\Diagnoser\QueryStrings\QueryStringFeatures;
 defined('ABSPATH') || exit;
 
 // Rocket defines.
-define('WPR_DIAGNOSER_VERSION', '1.1.0');
+define('WPR_DIAGNOSER_VERSION', '1.1.1');
 define('WPR_DIAGNOSER_FILE', __FILE__);
 
 include_once('inc/query-strings.php');

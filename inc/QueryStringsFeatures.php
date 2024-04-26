@@ -23,9 +23,7 @@ class QueryStringFeatures
         }
         foreach ($option_list as $query_string => $option) {
             if (isset($_GET[$query_string])) {
-                add_filter('get_rocket_option_' . $option, function () {
-                    return 0;
-                });
+                add_filter('get_rocket_option_' . $option, '__return_zero');
             }
         }
     }
