@@ -271,6 +271,7 @@ class WPRDiagnoser
         $json = '{ "error": "Server does not seem to have the ability to encode JSON" }';
       } else {
         $result = [];
+        $result['wpr_diagnoser_version'] = constant('WPR_DIAGNOSER_VERSION');
         $result['wpr_plugin'] = function_exists('get_rocket_option') ? 'active' : 'not-active';
         $result['constants'] = $this->get_constants();
         $result['preload_rucss_parameters'] = $this->get_preload_rucss_parameters();
