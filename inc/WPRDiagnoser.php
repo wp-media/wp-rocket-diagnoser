@@ -275,7 +275,7 @@ class WPRDiagnoser
         $result['wpr_plugin'] = function_exists('get_rocket_option') ? 'active' : 'not-active';
         $result['constants'] = $this->get_constants();
         $result['preload_rucss_parameters'] = $this->get_preload_rucss_parameters();
-        $result['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+        $result['user_agent'] = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "Couldn't get";
         $result['server_info'] = $this->getServerInformation();
         $result['imagify'] = !defined('IMAGIFY_VERSION') ? null : constant('IMAGIFY_VERSION');
         $result['preload_rucss_tasks'] = $this->getPreloadAndRUCSSTasks();
