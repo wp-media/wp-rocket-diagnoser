@@ -6,13 +6,11 @@ Repository of the WP Rocket Diagnoser plugin used by the Support team
 
 ### Plugin's version
 
-Whenever you make changes to the plugin and before pushing the final code of the new contribution to the repository, make sure to update the version in the `wpr-diagnoser.php` file.
+Whenever you make changes to the plugin and before pushing the final code of the new contribution to the repository, make sure to update the version in the `package.json` file.
 
-Update the `* Version: x.x.x` in the comment at the beginning of the file
+Only change the version in the `package.json` file.
 
-And Update the constant `WPR_DIAGNOSER_VERSION` => `define('WPR_DIAGNOSER_VERSION', 'x.x.x');`
-
-Make sure both are synchronized.
+**IMPORTANT:** Do not touch any line related to the version in `wpr-diagnoser.php` file, it is `x.x.x` because it will be replaced later in the build:release process.
 
 We use the SEMVER v2.0.0 specification here, please check [https://semver.org/](https://semver.org/)
 
@@ -25,6 +23,28 @@ In summary given a version number MAJOR.MINOR.PATCH, increment the:
 This helps the UIs that reads the information collected by this plugin to know which version is installed on the site, so, the UIs can know how to read the information (In case something changes from version to version, something that we should avoid whenever possible).
 
 This will be used by the UIs as the "[API version](https://www.postman.com/api-platform/api-versioning/)".
+
+### Building the release
+
+**IMPORTANT:** To use the command to build the release automatically, make sure you have Nodejs installed (version 20.x.x or later) and make sure to be in MacOS or Linux (If you are on Windows, you can use the WLS terminal)
+
+Creating the ZIP file manually can become a tedious process, so, this project includes one command you can run in your terminal.
+
+When you have the final version and want to create zipped plugin, just run this in your terminal (Make sure you are in the directory of the project):
+
+```npm run build:release```
+
+or if you have node 22.x.x+ installed, you can use the following as well:
+
+```node --run build:release```
+
+If everything goes well, you will have a `wpr-diagnoser-vx.x.x.zip` in the release directory (where x.x.x will be the version in the package.json)
+
+You will have a wpr-diagnoser directory (with the content the zip file will have too) and the version automatically replaced in the `wpr-diagnoser.php` file.
+
+This directory and the zip file are ready to be used a WordPress site.
+
+**IMPORTANT:** Make sure to update the version in the `package.json` when needed.
 
 ### Avoid making changes to WordPress and plugins if they are not needed
 
