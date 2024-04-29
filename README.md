@@ -26,11 +26,11 @@ This will be used by the UIs as the "[API version](https://www.postman.com/api-p
 
 ### Building the release
 
-**IMPORTANT:** To use the command to build the release automatically, make sure you have Nodejs installed (version 20.x.x or later) and make sure to be in MacOS or Linux (If you are on Windows, you can use the WLS terminal)
+**IMPORTANT:** To use the command to build the release automatically, make sure you have Nodejs installed (version 20.x.x or later) and make sure to be in MacOS or Linux (If you are on Windows, you can use the WSL terminal)
 
 Creating the ZIP file manually can become a tedious process, so, this project includes one command you can run in your terminal.
 
-When you have the final version and want to create zipped plugin, just run this in your terminal (Make sure you are in the directory of the project):
+When you have the final version and want to create a zipped plugin, just run this in your terminal (Make sure you are in the directory of the project):
 
 ```npm run build:release```
 
@@ -42,7 +42,7 @@ If everything goes well, you will have a `wpr-diagnoser-vx.x.x.zip` in the relea
 
 You will have a wpr-diagnoser directory (with the content the zip file will have too) and the version automatically replaced in the `wpr-diagnoser.php` file.
 
-This directory and the zip file are ready to be used a WordPress site.
+This directory and the zip file are ready to be used in a WordPress site.
 
 **IMPORTANT:** Make sure to update the version in the `package.json` when needed.
 
