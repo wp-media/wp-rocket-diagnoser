@@ -113,17 +113,7 @@ const cwd = process.cwd();
     if (result === undefined) {
         await removeOutPathTemp(outPathTemp);
     }
-    try {
-        coloredLog(`Creating directory: ${outPathTemp}`, 'blue');
-        await fs.mkdir(outPathTemp);
-    } catch (e) {
-        console.error(
-            colorizeText(`Could not create directory: ${outPathTemp}\n`, 'red'),
-            e
-        );
-        process.exit(1);
-    }
-    const command = `cp -R ${inPath}/* ${outPathTemp}`;
+    const command = `cp -R ${inPath} ${outPathTemp}`;
     coloredLog(`Copying files to: ${outPathTemp}...\n`, 'blue');
     exec(command, async (error, stdout, stderr) => {
         if (error) {
