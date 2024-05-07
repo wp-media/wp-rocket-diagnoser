@@ -40,10 +40,15 @@ function get_option_list()
  */
 function get_other_cache_query_strings()
 {
+    $no_prefix = get_no_query_string_prefix();
+    $activate_prefix = get_activate_query_string_prefix();
+
     $other_cached_query_strings = [
         'wpr-new-cache',
-        get_no_query_string_prefix() . 'cache',
-        get_activate_query_string_prefix() . 'cache',
+        $no_prefix . 'cache',
+        $activate_prefix . 'cache',
+        $no_prefix . 'all',
+        $activate_prefix . 'all',
     ];
     return $other_cached_query_strings;
 }
