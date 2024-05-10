@@ -66,7 +66,8 @@ class WPRDiagnoser
     'completed',
     'pending',
     'in-progress',
-    'to-submit'
+    'to-submit',
+    'failed'
   ];
   function __construct()
   {
