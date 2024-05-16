@@ -64,35 +64,26 @@ Also, **please use classes to write the new feature** whenever possible to keep 
 
 For this you have to go to the file `inc/query-strings.php`, there look for the function called `get_option_list`.
 
-Once there, just add a new entry to the Array.
-
-For example, let's say that a new option called `minify_img` (internal WP Rocket option name) is added to WP Rocket and you want to cover it in this plugin.
+Once there, just add a new entry to the Array using internal name of the option in WP Rocket's code base.
 
 You can add a new entry like this:
 
 ```php
     $option_list = [
         //...
-        'minifyimg' => 'minify_img'
+        'minify_img' // Assuming the new option is called 'minify_img' in WP Rocket's code base
     ];
 ```
 
-In which the key `minifyimg` is the name that will be used to construct the QueryStrings, and the value `minify_img` is the name of the option in WP Rocket (The string WP Rocket uses to get and save the option in the database).
+This will be added automatically to the cached QueryStrings list in WP Rocket.
 
-`minifyimg` will be automatically prefixed with `wpr-no-` for the new option deactivation and `wpr-activate-` for the new option activation, so, by only adding that to the array, two new QueryStrings will be created for you:
-
-- wpr-no-minifyimg
-- wpr-activate-minifyimg
-
-And these will be added automatically to the cached QueryStrings list in WP Rocket.
-
-You can use it now in the URL of the site this plugin is installed: `https://my-domain.com?wpr-no-minifyimg` or `https://my-domain.com?wpr-activate-minifyimg`
+You can use it now in the URL of the site this plugin is installed: `https://my-domain.com?minify_img=0` or `https://my-domain.com?minify_img=1`
 
 In summary, this doesn't require any implementation from your end, you just have to add a new entry to the array 😊
 
 ### Contribute adding new QueryStrings for new features
 
-If you want to have a new QueryString that will be linked to a new feature, you can go to `inc/query-strings.php` and then look for `get_other_cache_query_strings` function.
+If you want to have a new QueryString that will be linked to a new feature, you can go to `inc/query-strings.php` and then look for `get_other_query_strings` function.
 
 There just add the new QueryString in the array, just add a new string entry.
 
@@ -105,8 +96,6 @@ For example:
     ];
 ```
 
-This QueryString **won't be prefixed** so, whatever you add to the array will be used as it is as a QueryString, for example ?my_new_query_string.
-
 The QueryString will be added automatically to the cached QueryString in WP Rocket.
 
 You can use it now in the URL of the site this plugin is installed: `https://my-domain.com?my_new_query_string`
@@ -116,6 +105,16 @@ You can use it now in the URL of the site this plugin is installed: `https://my-
 ```php
 if(isset($_GET['my_new_query_string'])) {
     //Run the code
+}
+```
+
+You might want to check the value of the QueryString too, in case the behavior changes depending on the value.
+
+```php
+if($_GET['my_new_query_string'] === 'Some value') {
+    //Run the code
+} else if($_GET['my_new_query_string'] === 'Some other value') {
+    //Run another code
 }
 ```
 
