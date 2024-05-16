@@ -1,6 +1,6 @@
 {
     "name": "wpr-diagnoser",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "WP Rocket Diagnoser, plugin used by the Support team",
     "type": "module",
     "scripts": {
