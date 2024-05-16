@@ -28,6 +28,7 @@ class WPRDiagnoser
     'DONOTMINIFY',
     'DONOTMINIFYCSS',
     'DONOTMINIFYJS',
+    'SCRIPT_DEBUG'
 
   ];
   /**
