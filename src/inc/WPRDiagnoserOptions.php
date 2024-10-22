@@ -8,6 +8,7 @@ class WPRDiagnoserOptions
 {
     private $option_pre_filter_prefix = 'pre_get_rocket_option_';
     private $option_post_filter_prefix = 'get_rocket_option_';
+    private $post_meta_options = ['remove_unused_css', 'delay_js', 'defer_all_js', 'async_css', 'lazyload', 'lazyload_iframes', 'lazyload_css_bg_img', 'minify_css', 'minify_js', 'cdn'];
     /**
      * Contains the list of WP Rocket options and their related filters and options to be processed
      * 
@@ -56,7 +57,8 @@ class WPRDiagnoserOptions
         'delay_js' => [
             'name' => 'Delay JavaScript Execution',
             'get_rocket_option' => [
-                'delay_js_exclusions', 'delay_js_exclusions_selected_exclusions'
+                'delay_js_exclusions',
+                'delay_js_exclusions_selected_exclusions'
             ],
             'filters' => [
                 ['rocket_delay_js_exclusions', []]
@@ -210,13 +212,14 @@ class WPRDiagnoserOptions
     }
     private function fill_rocket_post_meta_options()
     {
-        $result = [];
+        $excluded_options = [];
         foreach ($this->options as $option_name => $value) {
-            if (isset($value['is_post_option']) && $value['is_post_option']) {
-                $result[$option_name] = (bool) is_rocket_post_excluded_option($option_name);
+            if (in_array($option_name, $this->post_meta_options, true)) {
+                $is_excluded = (bool) is_rocket_post_excluded_option($option_name);
+                if ($is_excluded) $excluded_options[] = $option_name;
             }
         }
-        $this->result['post_meta_excluded_options'] = $result;
+        $this->result['post_meta_excluded_options'] = $excluded_options;
     }
     public function get_list()
     {
