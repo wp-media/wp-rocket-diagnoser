@@ -139,3 +139,7 @@ At the end, just make sure to create a new entry in the `$result` array in the `
 If you are adding the information in an existent method, then just add the new entry to the local `$result` array of that method and don't do anything in the `$result` array in `set_no_rocket_print_on_footer`.
 
 **IMPORTANT:** Make sure to catch errors when trying to retrieve information, and return `null` or `"Couldn't get"` if you cannot get that information, so, errors are not logged in customer's websites log files.
+
+## Author
+
+Sandy Figueroa: [Github](https://github.com/sandyfzu)
